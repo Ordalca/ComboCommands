@@ -11,7 +11,7 @@ minecraft {
 
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
-group = 'me.ordlaca.combocommands'
+group = 'me.ordalca.combocommands'
 version = '1.0.0'
 
 sourceCompatibility = 1.8

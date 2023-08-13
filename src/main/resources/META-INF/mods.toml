@@ -4,7 +4,7 @@ license="MIT"
 
 [[mods]]
 modId="combocommands"
-version="0.0.1"
+version="1.0.0"
 displayName="ComboCommands"
 displayURL="https://github.com/Ordalca/ComboCommands"
 credits="Ordalca"
