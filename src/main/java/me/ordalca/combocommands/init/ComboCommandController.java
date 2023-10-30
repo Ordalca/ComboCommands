@@ -77,6 +77,7 @@ public class ComboCommandController {
                 captureCombo = (WritableCaptureCombo) transientData.captureCombo;
                 captureCombo.lastCapture = found;
                 captureCombo.captureCount = count;
+                captureCombo.refreshThresholdIndex();
             } else {
                 transientData.captureCombo = new WritableCaptureCombo(found, count);
             }
