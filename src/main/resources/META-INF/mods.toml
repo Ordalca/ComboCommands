@@ -4,10 +4,10 @@ license="MIT"
 
 [[mods]]
 modId="combocommands"
-version="1.0.0"
+version="1.0.2"
 displayName="ComboCommands"
 displayURL="https://github.com/Ordalca/ComboCommands"
-credits="Ordalca"
+credits="Ordalca & BeeLeDev"
 authors="Ordalca"
 description='''
 Mod adding commands related to Capture Combos.
