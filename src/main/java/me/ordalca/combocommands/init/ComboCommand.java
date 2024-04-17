@@ -1,5 +1,6 @@
 package me.ordalca.combocommands.init;
 
+import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.pixelmonmod.pixelmon.api.command.PixelmonCommandUtils;
@@ -8,9 +9,12 @@ import com.pixelmonmod.pixelmon.command.PixelCommand;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.CommandSource;
 import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.server.ServerLifecycleHooks;
 
+import java.util.List;
 import java.util.Locale;
 
 
@@ -43,6 +47,17 @@ public class ComboCommand extends PixelCommand {
             PixelmonCommandUtils.sendMessage(player, "You have a catch combo of "+count+" "+species+".");
         } else {
             PixelmonCommandUtils.sendMessage(sender, "Catch combo setting failed.");
+        }
+    }
+
+    @Override
+    public List<String> getTabCompletions(MinecraftServer server, CommandSource sender, String[] args, BlockPos pos) {
+        if (args.length == 1) {
+            return PixelmonCommandUtils.tabCompleteUsernames();
+        } else if (args.length == 2) {
+            return PixelmonCommandUtils.tabCompletePokemon();
+        } else {
+            return Lists.newArrayList();
         }
     }
 }
