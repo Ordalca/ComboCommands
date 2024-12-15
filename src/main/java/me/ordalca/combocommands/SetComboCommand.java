@@ -19,31 +19,16 @@ import java.util.*;
 
 public class SetComboCommand extends PixelCommand {
 	public SetComboCommand(CommandDispatcher<CommandSourceStack> dispatcher) {
-		super(dispatcher, "setcombo", "/setcombo [<player>] <count> <species>", 4);
+		super(dispatcher, "setcombo", "/setcombo <count> <species>", 4);
 	}
 
 	@Override
 	public void execute(CommandSourceStack sender, String[] args) throws CommandRuntimeException, CommandSyntaxException {
-		if (args.length > 1) {
-			args = PixelmonCommandUtils.setupCommandTargets(this, sender, args, 0);
-
-			ServerPlayer player = ServerLifecycleHooks.getCurrentServer().getPlayerList().getPlayerByName(args[0]);
+		if (args.length == 2) {
+			ServerPlayer player = PixelmonCommandUtils.requireEntityPlayer(sender);
 			if (player == null) {
-				if (NumberHelper.parseInt(args[0]).isPresent()) {
-					player = PixelmonCommandUtils.requireEntityPlayer(sender);
-				}
-			} else {
-				args = Arrays.copyOfRange(args, 1, args.length);
+				PixelmonCommandUtils.endCommand("argument.entity.notfound.player", sender);
 			}
-
-			if (player == null) {
-				PixelmonCommandUtils.endCommand("argument.entity.notfound.player", args[0]);
-			}
-
-			if (args.length == 1) {
-				PixelmonCommandUtils.endCommand("pixelmon.command.general.invalid");
-			}
-
 
 			OptionalInt count = NumberHelper.parseInt(args[0]);
 			if (count.isEmpty()) {
@@ -59,7 +44,9 @@ public class SetComboCommand extends PixelCommand {
 				PixelmonCommandUtils.endCommand("pixelmon.command.general.invalid");
 			}
 
-			ComboCommandController.setCombo(player, speciesName, count.getAsInt());
+			if (ComboCommandController.setCombo(player, speciesName, count.getAsInt())) {
+				PixelmonCommandUtils.sendMessage(player, "Set "+player.getName().getString()+"'s combo for "+speciesName+" to "+count.getAsInt());
+			}
 		}
 	}
 

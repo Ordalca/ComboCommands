@@ -1,6 +1,6 @@
 {
   "pack": {
-    "text": "Mod adding commands related to Capture Combos.",
-    "pack_format": 15
+    "description": "Mod adding commands related to Capture Combos.",
+    "pack_format": 18
   }
 }

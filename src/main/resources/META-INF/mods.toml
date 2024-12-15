@@ -30,6 +30,6 @@ Mod adding commands related to Capture Combos.
 [[dependencies.combocommands]]
     modId="pixelmon"
     mandatory=true
-    versionRange="[9.2.10,)"
+    versionRange="[9.2.6,)"
     ordering="NONE"
     side="BOTH"
