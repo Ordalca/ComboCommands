@@ -1,10 +1,10 @@
 modLoader="javafml"
-loaderVersion="[36,)"
+loaderVersion="[47.1.28,)"
 license="MIT"
 
 [[mods]]
 modId="combocommands"
-version="1.0.0"
+version="2.0.0"
 displayName="ComboCommands"
 displayURL="https://github.com/Ordalca/ComboCommands"
 credits="Ordalca"
@@ -13,24 +13,23 @@ description='''
 Mod adding commands related to Capture Combos.
 '''
 
-[[dependencies.modid]]
+[[dependencies.combocommands]]
     modId="forge"
     mandatory=true
-    versionRange="[36,)"
+    versionRange="[47.1.28,)"
     ordering="NONE"
     side="BOTH"
 
-[[dependencies.modid]]
+[[dependencies.combocommands]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.16.5,1.17)"
+    versionRange="[1.20.2,1.21)"
     ordering="NONE"
     side="BOTH"
 
-
-[[dependencies.modid]]
+[[dependencies.combocommands]]
     modId="pixelmon"
     mandatory=true
-    versionRange="[9.0.11,)"
+    versionRange="[9.2.6,)"
     ordering="NONE"
     side="BOTH"

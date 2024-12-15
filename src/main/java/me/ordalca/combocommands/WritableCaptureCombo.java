@@ -1,11 +1,11 @@
-package me.ordalca.combocommands.init;
+package me.ordalca.combocommands;
 
 import com.pixelmonmod.pixelmon.Pixelmon;
 import com.pixelmonmod.pixelmon.api.config.PixelmonConfigProxy;
 import com.pixelmonmod.pixelmon.api.events.battles.CatchComboEvent;
 import com.pixelmonmod.pixelmon.api.pokemon.species.Species;
 import com.pixelmonmod.pixelmon.storage.playerData.CaptureCombo;
-import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.server.level.ServerPlayer;
 
 
 public class WritableCaptureCombo extends CaptureCombo {
@@ -20,7 +20,7 @@ public class WritableCaptureCombo extends CaptureCombo {
     }
 
     @Override
-    public void onCapture(ServerPlayerEntity player, Species species) {
+    public void onCapture(ServerPlayer player, Species species) {
         if (PixelmonConfigProxy.getBattle().isAllowCatchCombo()) {
             if (this.lastCapture == species) {
                 ++this.captureCount;
@@ -82,7 +82,6 @@ public class WritableCaptureCombo extends CaptureCombo {
     public int getBasePerfIVCount() {
         return PixelmonConfigProxy.getBattle().getCatchComboPerfectIVs().size() > 0 ? PixelmonConfigProxy.getBattle().getCatchComboPerfectIVs().get(0) : 0;
     }
-
     @Override
     public int getPerfIVCount() {
         return PixelmonConfigProxy.getBattle().getCatchComboPerfectIVs().size() > currentThresholdIndex ? PixelmonConfigProxy.getBattle().getCatchComboPerfectIVs().get(currentThresholdIndex) : 0;
